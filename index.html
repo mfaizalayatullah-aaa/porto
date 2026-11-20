@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faizal Ayatullah — PM Operations</title>
+<meta name="description" content="Portofolio Product Manager Operations: sistem kerja PM berbasis AI, studi kasus produk inventory, WMS, procurement, dan logistik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#1b1d1c; --muted:#5d625f; --line:#e4e2dc;
+  --accent:#2f7a4f; --accent-soft:#e6f1ea; --warn:#9a6a12; --warn-soft:#f7efdc;
+  --info:#2c5f8a; --info-soft:#e4eef6; --new:#7a3f8f; --new-soft:#f1e7f4;
+  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121413; --surface:#1a1d1b; --ink:#ecedea; --muted:#a3a8a4; --line:#2c302d;
+    --accent:#6cc391; --accent-soft:#1d2f24; --warn:#e0b25a; --warn-soft:#30291a;
+    --info:#7fb2dd; --info-soft:#1b2833; --new:#c99be0; --new-soft:#2a1f30;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121413; --surface:#1a1d1b; --ink:#ecedea; --muted:#a3a8a4; --line:#2c302d;
+  --accent:#6cc391; --accent-soft:#1d2f24; --warn:#e0b25a; --warn-soft:#30291a;
+  --info:#7fb2dd; --info-soft:#1b2833; --new:#c99be0; --new-soft:#2a1f30;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+a{color:var(--accent)}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:20px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap}
+nav b{margin-right:auto;font-weight:600}
+nav a{color:var(--muted);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--ink)}
+header{padding:72px 0 40px}
+.eyebrow{font:500 13px/1 'JetBrains Mono',monospace;color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.1;margin:14px 0 18px;letter-spacing:-.02em}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:720px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.stat strong{display:block;font-size:28px;line-height:1.1;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--muted)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:26px;letter-spacing:-.01em;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 28px;max-width:720px}
+h3{font-size:18px;margin:0 0 6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.card p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.card li{margin:3px 0}
+/* pipeline */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:8px 0 28px}
+.step{flex:1 1 140px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;position:relative}
+.step small{font:500 11px/1 'JetBrains Mono',monospace;color:var(--accent)}
+.step b{display:block;margin:6px 0 2px;font-size:15px}
+.step span{font-size:13px;color:var(--muted)}
+.step.gate{border-style:dashed;border-color:var(--accent)}
+.labels{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.tag{font:500 12px/1 'JetBrains Mono',monospace;padding:6px 9px;border-radius:999px}
+.t-fakta{background:var(--accent-soft);color:var(--accent)}
+.t-asumsi{background:var(--warn-soft);color:var(--warn)}
+.t-konf{background:var(--info-soft);color:var(--info)}
+.t-usulan{background:var(--new-soft);color:var(--new)}
+.agents{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.agents code{font:12px 'JetBrains Mono',monospace;background:var(--bg);border:1px solid var(--line);padding:4px 8px;border-radius:6px;color:var(--ink)}
+/* case studies */
+.case{display:grid;grid-template-columns:220px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}
+.case:last-child{border-bottom:0}
+.case aside .domain{font:500 12px/1 'JetBrains Mono',monospace;color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+.case aside h3{margin-top:10px;font-size:20px;line-height:1.25}
+.case dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:15px}
+.case dt{color:var(--muted);font-weight:500}
+.case dd{margin:0}
+.case dd ul{margin:0;padding-left:18px}
+.lesson{grid-column:1/-1;background:var(--accent-soft);border-radius:10px;padding:12px 14px;margin-top:6px;font-size:14.5px}
+/* tools */
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;width:240px}
+td{color:var(--muted)}
+/* principles */
+ol.principles{counter-reset:p;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ol.principles li{counter-increment:p;display:grid;grid-template-columns:40px 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+ol.principles li::before{content:counter(p,decimal-leading-zero);font:600 15px 'JetBrains Mono',monospace;color:var(--accent)}
+ol.principles b{display:block}
+ol.principles span{color:var(--muted);font-size:15px}
+footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.note{font-size:13px;color:var(--muted);margin-top:18px}
+@media (max-width:760px){
+  .stats{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr;gap:12px}
+  .case dl{grid-template-columns:1fr;gap:2px}
+  .case dt{margin-top:8px}
+  th{width:auto;display:block;border:0;padding-bottom:0}
+  td{display:block;padding-top:4px}
+  header{padding:48px 0 28px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <b>Faizal Ayatullah</b>
+  <a href="#sistem">Sistem AI</a>
+  <a href="#kasus">Studi kasus</a>
+  <a href="#tools">Otomasi</a>
+  <a href="#prinsip">Cara kerja</a>
+  <a href="#kontak">Kontak</a>
+</div></nav>
+
+<header class="wrap">
+  <div class="eyebrow">Product Manager · Operations</div>
+  <h1>Membaca sistem dari code, lalu mengubahnya jadi produk yang bisa rilis.</h1>
+  <p class="lead">PM untuk produk operasional (inventory, gudang, procurement, order, dan logistik) di perusahaan e-grocery produk segar. Saya bukan developer, tetapi saya membangun sistem kerja berbasis AI untuk memetakan proses bisnis langsung dari codebase produksi dan mengubahnya menjadi PRD, desain, dan tiket.</p>
+  <div class="stats">
+    <div class="stat"><strong>210+</strong><span>dokumen analisis proses</span></div>
+    <div class="stat"><strong>27</strong><span>PRD &amp; spesifikasi desain</span></div>
+    <div class="stat"><strong>60+</strong><span>draft tiket siap sprint</span></div>
+    <div class="stat"><strong>19</strong><span>agent AI spesialis</span></div>
+  </div>
+</header>
+
+<section id="sistem"><div class="wrap">
+  <div class="eyebrow">Proyek utama</div>
+  <h2>Sistem kerja PM berbasis AI</h2>
+  <p class="sub">Produk operasional tersebar di banyak aplikasi. Untuk tahu "sistem sekarang bekerja seperti apa", PM biasanya bergantung pada waktu engineer, dan keputusan diambil dari ingatan. Saya membangun workspace Claude Code yang membaca salinan codebase secara <em>read-only</em> dan menghasilkan analisis yang bisa dicek.</p>
+
+  <div class="flow" role="list" aria-label="Pipeline fitur">
+    <div class="step" role="listitem"><small>01</small><b>Trace</b><span>Analyst domain menelusuri alur dari code &amp; data</span></div>
+    <div class="step" role="listitem"><small>02</small><b>Review</b><span>Agent reviewer mengecek setiap referensi</span></div>
+    <div class="step gate" role="listitem"><small>PM</small><b>Keputusan</b><span>Pertanyaan terbuka dijawab &amp; dicatat</span></div>
+    <div class="step" role="listitem"><small>03</small><b>PRD &amp; desain</b><span>Requirement, mockup, user flow</span></div>
+    <div class="step" role="listitem"><small>04</small><b>Tiket &amp; QA</b><span>Draft tiket + skenario test per requirement</span></div>
+    <div class="step gate" role="listitem"><small>PM</small><b>Konfirmasi</b><span>Baru dikirim ke Jira</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Label untuk setiap klaim</h3>
+      <p>Stakeholder selalu tahu mana yang sudah pasti dan mana yang belum.</p>
+      <div class="labels">
+        <span class="tag t-fakta">[FAKTA] terbukti dari code</span>
+        <span class="tag t-asumsi">[ASUMSI]</span>
+        <span class="tag t-konf">[PERLU KONFIRMASI]</span>
+        <span class="tag t-usulan">[USULAN]</span>
+      </div>
+      <p style="margin-top:12px">Setiap [FAKTA] wajib punya referensi file:baris. Setiap [PERLU KONFIRMASI] otomatis masuk daftar pertanyaan untuk tim.</p>
+    </div>
+    <div class="card">
+      <h3>Agent per domain</h3>
+      <p>Setiap analyst tahu istilah, alur, dan risiko domainnya.</p>
+      <div class="agents">
+        <code>procurement</code><code>inventory</code><code>fulfillment</code><code>logistic</code><code>order</code><code>catalog</code><code>approval-flow</code><code>integration</code><code>report</code><code>data</code><code>findings-reviewer</code><code>prd-writer</code><code>ux-designer</code><code>jira-writer</code><code>qa-tester</code>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Standar yang seragam</h3>
+      <ul>
+        <li>Kerangka analisis tetap: ringkasan → alur → status → approval → aturan → gap → pertanyaan</li>
+        <li>Tingkat gap Tinggi / Sedang / Rendah dipetakan langsung ke prioritas Jira</li>
+        <li>Perbedaan aplikasi mobile vs web untuk fitur yang sama selalu dicatat</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pengaman</h3>
+      <ul>
+        <li>Codebase tidak pernah diubah atau dijalankan</li>
+        <li>Query data wajib dry run &amp; cek biaya dulu</li>
+        <li>Tiket, pesan, dan perubahan data hanya dikirim setelah konfirmasi</li>
+        <li>Fakta stabil masuk knowledge base, jadi analisis berikutnya tidak mulai dari nol</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="kasus"><div class="wrap">
+  <div class="eyebrow">Studi kasus</div>
+  <h2>Produk yang saya analisis &amp; rancang</h2>
+  <p class="sub">Disamarkan: nama perusahaan, vendor, sistem internal, dan angka bisnis tidak ditampilkan.</p>
+
+  <article class="case">
+    <aside><div class="domain">Procurement · Finance</div><h3>Purchase Invoice &amp; buku hutang supplier</h3></aside>
+    <dl>
+      <dt>Masalah</dt><dd>Hutang ke supplier tidak tercatat di sistem mana pun. Finance mengelolanya di luar sistem.</dd>
+      <dt>Peran</dt><dd>Memetakan alur PO sampai tagihan dari code, PRD bersama Finance &amp; Purchasing, desain layar, pemecahan tiket BE/FE/QA.</dd>
+      <dt>Solusi</dt><dd><ul>
+        <li>Invoice untuk satu atau beberapa PO, final saat disimpan</li>
+        <li>Pelunasan lewat bulk upload bukti bayar</li>
+        <li>Kartu hutang per supplier dengan umur hutang</li>
+        <li>Ledger yang tidak bisa diubah atau dihapus</li>
+      </ul></dd>
+      <div class="lesson"><b>Pelajaran:</b> tiga kali revisi PRD justru membuat versi akhir lebih sederhana (tanpa draft/void, tanpa integrasi bayar otomatis) agar muat dalam 2 sprint.</div>
+    </dl>
+  </article>
+
+  <article class="case">
+    <aside><div class="domain">Inventory · Produksi</div><h3>Production kitchen: resep, potong stok, COGS</h3></aside>
+    <dl>
+      <dt>Masalah</dt><dd>Stok bahan baku dapur tidak terpotong sesuai pemakaian, sehingga COGS tidak akurat.</dd>
+      <dt>Solusi</dt><dd><ul>
+        <li>Model hybrid: resep sebagai nilai awal, stok dipotong dari pemakaian aktual per work order</li>
+        <li>Sisa lebih, waste, dan selisih tercatat otomatis</li>
+        <li>Dipecah menjadi Fase 1 COGS dan Fase 2 pemakaian aktual</li>
+      </ul></dd>
+      <div class="lesson"><b>Pelajaran:</b> 29 keputusan tercatat bertanggal. Scope terus diperkecil: master resep yang sudah ada dipakai ulang, dan fitur substitusi dibatalkan karena operasional tidak membutuhkannya.</div>
+    </dl>
+  </article>
+
+  <article class="case">
+    <aside><div class="domain">Logistik · Last-mile</div><h3>Aplikasi driver in-house &amp; live tracking</h3></aside>
+    <dl>
+      <dt>Masalah</dt><dd>Armada sendiri memakai aplikasi pihak ketiga, sehingga tidak ada lokasi driver live, pelanggan tidak bisa melacak di peta, dan data gagal kirim tersebar.</dd>
+      <dt>Peran</dt><dd>Sizing dari code (10+ service terdampak), pemetaan ketergantungan ke vendor, PRD, mockup 10 layar.</dd>
+      <dt>Solusi</dt><dd><ul>
+        <li>Fase 1: driver tracker, control tower, tracking pelanggan</li>
+        <li>Fase 2: ganti aplikasi vendor untuk last-mile instant</li>
+        <li>Fase 3: gagal kirim, retur, middle-mile, next-day</li>
+      </ul></dd>
+    </dl>
+  </article>
+
+  <article class="case">
+    <aside><div class="domain">Gudang · Replenishment</div><h3>Logic refill berbasis forecast</h3></aside>
+    <dl>
+      <dt>Masalah</dt><dd>Pengisian ulang rak pick dihitung manual di spreadsheet.</dd>
+      <dt>Solusi</dt><dd>Prioritas P0/P1/P2 dari forecast &amp; target stok dengan stok realtime per area. Override manual tetap boleh, tetapi wajib beri alasan bila deviasi melewati ambang.</dd>
+    </dl>
+  </article>
+
+  <article class="case">
+    <aside><div class="domain">Marketing · Pricing</div><h3>Clearance sale: dari spreadsheet ke sistem</h3></aside>
+    <dl>
+      <dt>Masalah</dt><dd>Baris tidak valid terbuang tanpa pesan, label kedaluwarsa hilang saat campaign diedit, dan tidak ada approval maupun jejak perubahan.</dd>
+      <dt>Solusi</dt><dd>Desain 7 layar: validasi per baris dengan alasan yang terlihat, approval untuk harga di bawah batas wajar, konfirmasi sebelum promo live dinonaktifkan, riwayat perubahan.</dd>
+    </dl>
+  </article>
+
+  <article class="case">
+    <aside><div class="domain">Commercial · Promo</div><h3>Promo "Beli Banyak Lebih Hemat"</h3></aside>
+    <dl>
+      <dt>Masalah</dt><dd>Commercial ingin menaikkan jumlah item per order lewat diskon mix &amp; match lintas SKU.</dd>
+      <dt>Peran</dt><dd>Mengecek engine promo dari code. Sebagian besar mekanisme sudah ada, jadi PRD fokus ke gap yang benar-benar belum ada.</dd>
+    </dl>
+  </article>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <div class="eyebrow">Otomasi</div>
+  <h2>Tools yang saya bangun</h2>
+  <p class="sub">Pekerjaan berulang diotomasi. Keputusan tetap di manusia.</p>
+  <table>
+    <tr><th>Bot Q&amp;A di Google Chat</th><td>Tim menulis <code>#tanya …</code>. Bot menjawab dari knowledge base, dokumen analisis, dan code, lengkap dengan referensi dan konteks thread.</td></tr>
+    <tr><th>Metrik operasional mingguan</th><td>Availability, stock gap, unfulfillment, dan waste per gudang dari BigQuery, dengan estimasi biaya dan batas scan otomatis.</td></tr>
+    <tr><th>BigQuery cost guard</th><td>Dry run wajib sebelum query apa pun. Query mahal harus dikonfirmasi dulu.</td></tr>
+    <tr><th>Workflow n8n</th><td>Rotasi section homepage top-30 produk, duplikasi SKU untuk tier khusus, draft SKU baru dari spreadsheet.</td></tr>
+    <tr><th>QA E2E di staging</th><td>Agent menjalankan skenario test di browser. Aksi yang mengubah data harus dikonfirmasi.</td></tr>
+    <tr><th>Weekly report otomatis</th><td>Laporan mingguan disusun dari tiket Jira dan dokumen kerja ke satu dokumen hidup.</td></tr>
+    <tr><th>Code knowledge graph</th><td>Indeks codebase per domain untuk pencarian lintas service yang lebih cepat dan murah.</td></tr>
+  </table>
+</div></section>
+
+<section id="prinsip"><div class="wrap">
+  <div class="eyebrow">Cara kerja</div>
+  <h2>Prinsip yang saya pegang</h2>
+  <ol class="principles">
+    <li><div><b>Bukti dulu, opini kemudian</b><span>Setiap klaim tentang sistem bisa ditelusuri ke code atau data.</span></div></li>
+    <li><div><b>Pisahkan fakta, asumsi, dan usulan</b><span>Tidak ada yang tercampur di satu kalimat.</span></div></li>
+    <li><div><b>Catat keputusan</b><span>Log keputusan bertanggal di setiap PRD, sehingga perubahan scope bisa dijelaskan.</span></div></li>
+    <li><div><b>Scope kecil yang bisa rilis</b><span>Satu project maksimal 2 sprint. Fase berikutnya tidak dicampur ke tiket fase berjalan.</span></div></li>
+    <li><div><b>Otomasi, tapi manusia memutuskan</b><span>Agent membuat draft. Yang keluar ke orang lain atau ke sistem selalu lewat konfirmasi.</span></div></li>
+  </ol>
+</div></section>
+
+<footer id="kontak"><div class="wrap">
+  <b style="color:var(--ink)">Kontak</b><br>
+  LinkedIn: <a href="#">(isi)</a> · Email: <a href="#">(isi)</a>
+  <p class="note">Contoh di halaman ini disamarkan dan tidak memuat data, kode, atau dokumen internal perusahaan.</p>
+</div></footer>
+</body>
+</html>
