@@ -127,5 +127,5 @@ flowchart LR
 ---
 
 ## Kontak
-- LinkedIn: _(isi)_
-- Email: _(isi)_
+- LinkedIn: https://www.linkedin.com/in/mfaizalayatullah/
+- Email: mfaizalayatullah@gmail.com
