@@ -1,288 +1,674 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Faizal Ayatullah — PM Operations</title>
-<meta name="description" content="Portofolio Product Manager Operations: sistem kerja PM berbasis AI, studi kasus produk inventory, WMS, procurement, dan logistik.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Faizal Ayatullah — Product Manager</title>
+<meta name="description" content="Muhammad Faizal Ayatullah — Product Manager for operations and consumer products. Case studies, outcomes and the AI-assisted way I work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#fbfaf7; --surface:#ffffff; --ink:#1b1d1c; --muted:#5d625f; --line:#e4e2dc;
-  --accent:#2f7a4f; --accent-soft:#e6f1ea; --warn:#9a6a12; --warn-soft:#f7efdc;
-  --info:#2c5f8a; --info-soft:#e4eef6; --new:#7a3f8f; --new-soft:#f1e7f4;
-  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121413; --surface:#1a1d1b; --ink:#ecedea; --muted:#a3a8a4; --line:#2c302d;
-    --accent:#6cc391; --accent-soft:#1d2f24; --warn:#e0b25a; --warn-soft:#30291a;
-    --info:#7fb2dd; --info-soft:#1b2833; --new:#c99be0; --new-soft:#2a1f30;
-    --shadow:none;
+  :root{
+    --bg:#F7F6F2; --surface:#FFFFFF; --surface-2:#F1EFE9;
+    --ink:#15171A; --muted:#5B6068; --faint:#8A8F96; --line:#E4E1D9;
+    --accent:#2F5BEA; --accent-soft:#E6ECFD;
+    --pos:#1F8A5B; --pos-soft:#E2F3EA;
+    --warn:#B26B00; --warn-soft:#FBEFD9;
+    --vio:#7048C8; --vio-soft:#EEE7FA;
+    --bar-bg:#ECE9E1;
+    --shadow:0 1px 2px rgba(20,22,26,.04), 0 8px 24px rgba(20,22,26,.05);
+    --serif:'Instrument Serif', Georgia, serif;
+    --sans:'Inter', system-ui, sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --r:14px;
   }
-}
-:root[data-theme="dark"]{
-  --bg:#121413; --surface:#1a1d1b; --ink:#ecedea; --muted:#a3a8a4; --line:#2c302d;
-  --accent:#6cc391; --accent-soft:#1d2f24; --warn:#e0b25a; --warn-soft:#30291a;
-  --info:#7fb2dd; --info-soft:#1b2833; --new:#c99be0; --new-soft:#2a1f30;
-  --shadow:none;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px}
-a{color:var(--accent)}
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:20px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap}
-nav b{margin-right:auto;font-weight:600}
-nav a{color:var(--muted);text-decoration:none;font-size:14px}
-nav a:hover{color:var(--ink)}
-header{padding:72px 0 40px}
-.eyebrow{font:500 13px/1 'JetBrains Mono',monospace;color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
-h1{font-size:clamp(32px,5vw,48px);line-height:1.1;margin:14px 0 18px;letter-spacing:-.02em}
-.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:720px;margin:0}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-.stat strong{display:block;font-size:28px;line-height:1.1;letter-spacing:-.02em}
-.stat span{font-size:13px;color:var(--muted)}
-section{padding:56px 0;border-top:1px solid var(--line)}
-h2{font-size:26px;letter-spacing:-.01em;margin:0 0 8px}
-.sub{color:var(--muted);margin:0 0 28px;max-width:720px}
-h3{font-size:18px;margin:0 0 6px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-.card p{margin:6px 0 0;color:var(--muted);font-size:15px}
-.card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
-.card li{margin:3px 0}
-/* pipeline */
-.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:8px 0 28px}
-.step{flex:1 1 140px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;position:relative}
-.step small{font:500 11px/1 'JetBrains Mono',monospace;color:var(--accent)}
-.step b{display:block;margin:6px 0 2px;font-size:15px}
-.step span{font-size:13px;color:var(--muted)}
-.step.gate{border-style:dashed;border-color:var(--accent)}
-.labels{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
-.tag{font:500 12px/1 'JetBrains Mono',monospace;padding:6px 9px;border-radius:999px}
-.t-fakta{background:var(--accent-soft);color:var(--accent)}
-.t-asumsi{background:var(--warn-soft);color:var(--warn)}
-.t-konf{background:var(--info-soft);color:var(--info)}
-.t-usulan{background:var(--new-soft);color:var(--new)}
-.agents{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.agents code{font:12px 'JetBrains Mono',monospace;background:var(--bg);border:1px solid var(--line);padding:4px 8px;border-radius:6px;color:var(--ink)}
-/* case studies */
-.case{display:grid;grid-template-columns:220px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}
-.case:last-child{border-bottom:0}
-.case aside .domain{font:500 12px/1 'JetBrains Mono',monospace;color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
-.case aside h3{margin-top:10px;font-size:20px;line-height:1.25}
-.case dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:15px}
-.case dt{color:var(--muted);font-weight:500}
-.case dd{margin:0}
-.case dd ul{margin:0;padding-left:18px}
-.lesson{grid-column:1/-1;background:var(--accent-soft);border-radius:10px;padding:12px 14px;margin-top:6px;font-size:14.5px}
-/* tools */
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-weight:600;width:240px}
-td{color:var(--muted)}
-/* principles */
-ol.principles{counter-reset:p;list-style:none;padding:0;margin:0;display:grid;gap:12px}
-ol.principles li{counter-increment:p;display:grid;grid-template-columns:40px 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
-ol.principles li::before{content:counter(p,decimal-leading-zero);font:600 15px 'JetBrains Mono',monospace;color:var(--accent)}
-ol.principles b{display:block}
-ol.principles span{color:var(--muted);font-size:15px}
-footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-.note{font-size:13px;color:var(--muted);margin-top:18px}
-@media (max-width:760px){
-  .stats{grid-template-columns:1fr 1fr}
-  .grid2{grid-template-columns:1fr}
-  .case{grid-template-columns:1fr;gap:12px}
-  .case dl{grid-template-columns:1fr;gap:2px}
-  .case dt{margin-top:8px}
-  th{width:auto;display:block;border:0;padding-bottom:0}
-  td{display:block;padding-top:4px}
-  header{padding:48px 0 28px}
-}
+  @media screen and (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#111316; --surface:#181B1F; --surface-2:#1F2328;
+      --ink:#ECEDEE; --muted:#A3A8AF; --faint:#767C84; --line:#2A2F35;
+      --accent:#7C9BFF; --accent-soft:#1E2741;
+      --pos:#4CC38A; --pos-soft:#17301F;
+      --warn:#F0B35A; --warn-soft:#352A17;
+      --vio:#B79BFF; --vio-soft:#2A2340;
+      --bar-bg:#262A30; --shadow:none;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#111316; --surface:#181B1F; --surface-2:#1F2328;
+    --ink:#ECEDEE; --muted:#A3A8AF; --faint:#767C84; --line:#2A2F35;
+    --accent:#7C9BFF; --accent-soft:#1E2741;
+    --pos:#4CC38A; --pos-soft:#17301F;
+    --warn:#F0B35A; --warn-soft:#352A17;
+    --vio:#B79BFF; --vio-soft:#2A2340;
+    --bar-bg:#262A30; --shadow:none;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  .brand{font-weight:700;color:var(--ink);margin-right:auto;white-space:nowrap}
+  .brand span{color:var(--faint);font-weight:500}
+  .navlinks{display:flex;gap:20px;overflow-x:auto;white-space:nowrap}
+  .navlinks a{color:var(--muted);font-size:14px}
+  .navlinks a:hover{color:var(--ink);text-decoration:none}
+  .nav-cta{font-size:13.5px;font-weight:600;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:999px;white-space:nowrap}
+  .nav-cta:hover{text-decoration:none;opacity:.88}
+
+  .hero{padding:72px 24px 56px;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+  .hero-name{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:14px}
+  .kicker{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+  .kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pos)}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,64px);line-height:1.02;letter-spacing:-.01em;margin:18px 0 20px}
+  h1 em{color:var(--accent)}
+  .lead{font-size:18px;color:var(--muted);max-width:560px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{font-weight:600;font-size:14.5px;padding:12px 18px;border-radius:10px;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+  .btn:hover{text-decoration:none;border-color:var(--ink)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .scorecard{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px}
+  .sc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .sc-head b{font-size:14px}
+  .sc-head span{font:500 11px var(--mono);color:var(--faint)}
+  .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .sc{background:var(--surface-2);border-radius:12px;padding:14px}
+  .sc strong{display:block;font-size:28px;line-height:1.05;letter-spacing:-.02em}
+  .sc span{font-size:12.5px;color:var(--muted)}
+  .sc-foot{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap}
+  .pill{font:600 11px/1 var(--sans);padding:5px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .eyebrow{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.4vw,44px);line-height:1.08;margin-bottom:12px}
+  .intro{color:var(--muted);max-width:680px;margin-bottom:36px;font-size:16.5px}
+
+  .t{font:600 10.5px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:4px 7px;border-radius:5px;white-space:nowrap;justify-self:start;align-self:flex-start}
+  .t-m{background:var(--pos-soft);color:var(--pos)}
+  .t-t{background:var(--accent-soft);color:var(--accent)}
+  .t-d{background:var(--vio-soft);color:var(--vio)}
+  .t-e{background:var(--warn-soft);color:var(--warn)}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:-18px 0 26px;align-items:center}
+  .legend .t{margin-right:4px}
+
+  .impact{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+  .kpi-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .kpi-area{font-size:12px;color:var(--faint);font-weight:500}
+  .kpi-val{font-size:30px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+  .kpi p{font-size:13.5px;color:var(--muted);line-height:1.45}
+
+  .case{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:40px 0;border-top:1px solid var(--line)}
+  .case.first{border-top:0;padding-top:8px}
+  .case-meta .domain{font:600 11.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+  .case-meta h3{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;margin:12px 0 18px}
+  .meta-list{display:grid;gap:10px;font-size:13.5px}
+  .meta-list div{display:grid;grid-template-columns:72px 1fr;gap:8px}
+  .meta-list dt{color:var(--faint)}
+  .case-body{display:grid;gap:20px;min-width:0}
+  .blocks{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px}
+  .blk h4{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--faint);margin-bottom:8px}
+  .blk p,.blk li{font-size:15px;color:var(--muted)}
+  .blk ul{list-style:none;display:grid;gap:6px}
+  .blk li{padding-left:16px;position:relative}
+  .blk li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:2px;background:var(--accent)}
+  .blk b{color:var(--ink);font-weight:600}
+  .outcomes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .oc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:6px}
+  .oc-val{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .oc p{font-size:13px;color:var(--muted);line-height:1.4}
+  .lesson{border-left:3px solid var(--warn);background:var(--warn-soft);padding:12px 16px;border-radius:0 10px 10px 0;font-size:14.5px;color:var(--ink)}
+  .lesson b{color:var(--warn)}
+
+  .chart{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .chart-title{font-size:14px;font-weight:600;margin-bottom:2px}
+  .chart-sub{font-size:12.5px;color:var(--faint);margin-bottom:14px}
+  .bars{display:grid;gap:10px}
+  .bar-row{display:grid;grid-template-columns:120px 1fr 52px;gap:12px;align-items:center;font-size:13px}
+  .bar-row .lbl{color:var(--muted)}
+  .bar-track{height:12px;background:var(--bar-bg);border-radius:6px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:6px;background:var(--accent);width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+  .bar-fill.muted{background:var(--faint)}
+  .bar-fill.pos{background:var(--pos)}
+  .bar-row .num{font:600 13px var(--mono);text-align:right}
+  .bars.compact .bar-row{grid-template-columns:60px 1fr 40px}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  .more{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .mw{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px}
+  .mw .domain{font:600 10.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+  .mw h4{font-size:16px;line-height:1.3}
+  .mw p{font-size:13.5px;color:var(--muted)}
+  .mw .stat{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .mw .stat b{font-size:18px;letter-spacing:-.01em}
+  .mw .stat span{font-size:12.5px;color:var(--muted)}
+
+  .autos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .auto{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:12px}
+  .auto h4{font-size:17px}
+  .auto p{font-size:14px;color:var(--muted)}
+  .steps{list-style:none;display:grid;border-left:2px solid var(--line);margin-left:6px}
+  .steps li{position:relative;padding:0 0 9px 18px;font-size:13px;color:var(--ink)}
+  .steps li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+  .steps li:last-child{padding-bottom:0}
+  .steps li:last-child::before{background:var(--pos);border-color:var(--pos)}
+  .auto .oc{margin-top:auto;background:var(--surface-2);border-color:transparent}
+  .auto .chart{padding:14px;background:var(--surface-2);border-color:transparent}
+
+  .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:28px}
+  .fstep{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .fstep small{font:600 10.5px var(--mono);color:var(--accent)}
+  .fstep.gate{border-style:dashed;border-color:var(--warn)}
+  .fstep.gate small{color:var(--warn)}
+  .fstep b{display:block;font-size:14.5px;margin:4px 0 2px}
+  .fstep span{font-size:12.5px;color:var(--muted);line-height:1.4;display:block}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+  .card h4{font-size:16px;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .tag{font:500 12px var(--mono);padding:5px 9px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+  .tag.f{background:var(--pos-soft);color:var(--pos);border-color:transparent}
+  .tag.a{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+  .tag.c{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+  .tag.p{background:var(--vio-soft);color:var(--vio);border-color:transparent}
+  .principles{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+  .principles li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .principles li b{display:block;font-size:14.5px;margin-bottom:4px}
+  .principles li span{font-size:13px;color:var(--muted)}
+  .principles li i{font:600 11px var(--mono);color:var(--accent);font-style:normal;display:block;margin-bottom:6px}
+
+  .shift{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin-bottom:32px}
+  .shift-col{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+  .shift-col.now{border-color:var(--accent);background:var(--accent-soft)}
+  .shift-tag{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--faint);margin-bottom:10px}
+  .shift-col.now .shift-tag{color:var(--accent)}
+  .shift-col ul{list-style:none;display:grid;gap:6px}
+  .shift-col li{font-size:14px;color:var(--muted);padding-left:16px;position:relative}
+  .shift-col li::before{content:"›";position:absolute;left:0;color:var(--faint);font-weight:700}
+  .shift-col.now li{color:var(--ink)}
+  .shift-col.now li::before{color:var(--accent)}
+  .shift-arrow{align-self:center;font-size:24px;color:var(--faint)}
+  @media (max-width:640px){ .shift{grid-template-columns:1fr} .shift-arrow{transform:rotate(90deg);justify-self:center} }
+  .xp{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
+  .timeline{list-style:none;border-left:2px solid var(--line);margin-left:6px}
+  .timeline li{position:relative;padding:0 0 26px 24px}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--faint)}
+  .timeline li.now::before{background:var(--pos);border-color:var(--pos)}
+  .timeline .when{font:600 11.5px var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+  .timeline h4{font-size:16.5px;margin:4px 0 0}
+  .timeline .org{font-size:14px;color:var(--accent);font-weight:500}
+  .timeline p{font-size:14px;color:var(--muted);margin-top:6px}
+  .skills{display:grid;gap:12px;align-content:start}
+
+  .contact{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+  .clinks{display:grid;gap:10px}
+  .clink{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;color:var(--ink)}
+  .clink:hover{text-decoration:none;border-color:var(--accent)}
+  .clink span{font-size:12.5px;color:var(--faint);white-space:nowrap}
+  .clink b{font-weight:600;font-size:14.5px;word-break:break-word}
+  footer{border-top:1px solid var(--line);padding:24px 0 48px;font-size:13px;color:var(--faint)}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr;gap:32px;padding-top:48px}
+    .impact{grid-template-columns:1fr 1fr}
+    .case{grid-template-columns:1fr;gap:18px}
+    .more,.autos{grid-template-columns:1fr 1fr}
+    .flow{grid-template-columns:repeat(3,1fr)}
+    .principles{grid-template-columns:1fr 1fr}
+    .xp,.contact{grid-template-columns:1fr}
+    .navlinks{display:none}
+  }
+  @media (max-width:640px){
+    .wrap,.hero{padding-left:16px;padding-right:16px}
+    section{padding:52px 0}
+    .impact,.more,.autos,.blocks,.pair,.two,.principles{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr 1fr}
+    .bar-row{grid-template-columns:96px 1fr 46px;gap:8px}
+    .sc strong{font-size:24px}
+  }
+  @media (prefers-reduced-motion: reduce){ .bar-fill{transition:none} html{scroll-behavior:auto} }
+
+  /* print / PDF */
+  @page{size:A4;margin:12mm}
+  @media print{
+    html{font-size:12px}
+    body{background:#fff;font-size:12px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    nav,.cta{display:none}
+    .wrap{max-width:none;padding:0}
+    .hero{padding:0 0 18px;gap:24px}
+    h1{font-size:34px;margin:10px 0 10px}
+    .lead{font-size:13px}
+    section{padding:18px 0}
+    h2{font-size:24px;margin-bottom:6px}
+    .intro{font-size:12.5px;margin-bottom:14px}
+    .legend{margin:-6px 0 12px}
+    .kpi,.scorecard,.oc,.chart,.mw,.auto,.card,.fstep,.principles li{box-shadow:none;break-inside:avoid}
+    .case{grid-template-columns:190px 1fr;gap:20px;padding:16px 0;break-inside:avoid}
+    .case-meta h3{font-size:21px;margin:8px 0 10px}
+    .blk p,.blk li{font-size:12px}
+    .kpi-val{font-size:22px}
+    .kpi p,.mw p,.auto p,.card p{font-size:11.5px}
+    .oc-val{font-size:18px}
+    .bar-fill{transition:none}
+    #experience,#contact{break-inside:avoid}
+    .principles{grid-template-columns:repeat(5,1fr)}
+    footer{padding:10px 0 0}
+  }
 </style>
 </head>
 <body>
-<nav><div class="wrap">
-  <b>Faizal Ayatullah</b>
-  <a href="#sistem">Sistem AI</a>
-  <a href="#kasus">Studi kasus</a>
-  <a href="#tools">Otomasi</a>
-  <a href="#prinsip">Cara kerja</a>
-  <a href="#kontak">Kontak</a>
-</div></nav>
 
-<header class="wrap">
-  <div class="eyebrow">Product Manager · Operations</div>
-  <h1>Membaca sistem dari code, lalu mengubahnya jadi produk yang bisa rilis.</h1>
-  <p class="lead">PM untuk produk operasional (inventory, gudang, procurement, order, dan logistik) di perusahaan e-grocery produk segar. Saya bukan developer, tetapi saya membangun sistem kerja berbasis AI untuk memetakan proses bisnis langsung dari codebase produksi dan mengubahnya menjadi PRD, desain, dan tiket.</p>
-  <div class="stats">
-    <div class="stat"><strong>210+</strong><span>dokumen analisis proses</span></div>
-    <div class="stat"><strong>27</strong><span>PRD &amp; spesifikasi desain</span></div>
-    <div class="stat"><strong>60+</strong><span>draft tiket siap sprint</span></div>
-    <div class="stat"><strong>19</strong><span>agent AI spesialis</span></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Muhammad Faizal Ayatullah <span>· PM</span></a>
+    <div class="navlinks">
+      <a href="#impact">Impact</a>
+      <a href="#work">Case studies</a>
+      <a href="#automation">Automation</a>
+      <a href="#approach">How I work</a>
+      <a href="#experience">Experience</a>
+    </div>
+    <a class="nav-cta" href="#contact">Get in touch</a>
   </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <div class="hero-name">Muhammad Faizal Ayatullah</div>
+    <div class="kicker">Product Manager · Operations &amp; Consumer</div>
+    <h1>I find where the system <em>actually</em> breaks, then ship the fix.</h1>
+    <p class="lead">PM for operations and consumer products at a fresh-produce e-grocery in Indonesia. I spent ten years in technical operations solving problems. As a PM I start one step earlier: define the problem worth solving, prove it with data, and only then choose a small, shippable solution.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">View case studies</a>
+      <a class="btn" href="https://linkedin.com/in/mfaizalayatullah" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+  <aside class="scorecard" aria-label="Scorecard">
+    <div class="sc-head"><b>PM scorecard</b><span>current role</span></div>
+    <div class="sc-grid">
+      <div class="sc"><strong>230+</strong><span>process analyses, each backed by evidence</span></div>
+      <div class="sc"><strong>30+</strong><span>PRDs &amp; design specs</span></div>
+      <div class="sc"><strong>65+</strong><span>sprint-ready tickets</span></div>
+      <div class="sc"><strong>≤2</strong><span>sprints per project, by design</span></div>
+    </div>
+    <div class="sc-foot">
+      <span class="pill">Inventory &amp; WMS</span><span class="pill">Procurement &amp; AP</span><span class="pill">Kitchen</span><span class="pill">Last-mile</span><span class="pill">Search</span><span class="pill">Home</span><span class="pill">Promo</span>
+    </div>
+  </aside>
 </header>
 
-<section id="sistem"><div class="wrap">
-  <div class="eyebrow">Proyek utama</div>
-  <h2>Sistem kerja PM berbasis AI</h2>
-  <p class="sub">Produk operasional tersebar di banyak aplikasi. Untuk tahu "sistem sekarang bekerja seperti apa", PM biasanya bergantung pada waktu engineer, dan keputusan diambil dari ingatan. Saya membangun workspace Claude Code yang membaca salinan codebase secara <em>read-only</em> dan menghasilkan analisis yang bisa dicek.</p>
-
-  <div class="flow" role="list" aria-label="Pipeline fitur">
-    <div class="step" role="listitem"><small>01</small><b>Trace</b><span>Analyst domain menelusuri alur dari code &amp; data</span></div>
-    <div class="step" role="listitem"><small>02</small><b>Review</b><span>Agent reviewer mengecek setiap referensi</span></div>
-    <div class="step gate" role="listitem"><small>PM</small><b>Keputusan</b><span>Pertanyaan terbuka dijawab &amp; dicatat</span></div>
-    <div class="step" role="listitem"><small>03</small><b>PRD &amp; desain</b><span>Requirement, mockup, user flow</span></div>
-    <div class="step" role="listitem"><small>04</small><b>Tiket &amp; QA</b><span>Draft tiket + skenario test per requirement</span></div>
-    <div class="step gate" role="listitem"><small>PM</small><b>Konfirmasi</b><span>Baru dikirim ke Jira</span></div>
-  </div>
-
-  <div class="grid2">
-    <div class="card">
-      <h3>Label untuk setiap klaim</h3>
-      <p>Stakeholder selalu tahu mana yang sudah pasti dan mana yang belum.</p>
-      <div class="labels">
-        <span class="tag t-fakta">[FAKTA] terbukti dari code</span>
-        <span class="tag t-asumsi">[ASUMSI]</span>
-        <span class="tag t-konf">[PERLU KONFIRMASI]</span>
-        <span class="tag t-usulan">[USULAN]</span>
+<section id="impact">
+  <div class="wrap">
+    <div class="eyebrow">Impact at a glance</div>
+    <h2>Outcomes, not just output</h2>
+    <p class="intro">Figures are relative or indexed and contain no company financial or operational data.</p>
+    <div class="legend">
+      <span><span class="t t-m">Measured</span> observed after launch</span>
+      <span><span class="t t-t">Target</span> PRD goal or simulation</span>
+      <span><span class="t t-d">Delivery</span> scope &amp; process</span>
+    </div>
+    <div class="impact">
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Homepage merchandising</span><span class="t t-m">Measured</span></div>
+        <div class="kpi-val">~3×</div>
+        <p>Less exposure concentrated on the top few products after an automated rotation I built, so the whole range gets seen.</p>
       </div>
-      <p style="margin-top:12px">Setiap [FAKTA] wajib punya referensi file:baris. Setiap [PERLU KONFIRMASI] otomatis masuk daftar pertanyaan untuk tim.</p>
-    </div>
-    <div class="card">
-      <h3>Agent per domain</h3>
-      <p>Setiap analyst tahu istilah, alur, dan risiko domainnya.</p>
-      <div class="agents">
-        <code>procurement</code><code>inventory</code><code>fulfillment</code><code>logistic</code><code>order</code><code>catalog</code><code>approval-flow</code><code>integration</code><code>report</code><code>data</code><code>findings-reviewer</code><code>prd-writer</code><code>ux-designer</code><code>jira-writer</code><code>qa-tester</code>
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Search ranking</span><span class="t t-t">Target</span></div>
+        <div class="kpi-val">+31%</div>
+        <p>More top keywords showing a priority product in the top 3 (simulated), with no increase in irrelevant results.</p>
+      </div>
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Catalog operations</span><span class="t t-d">Delivery</span></div>
+        <div class="kpi-val">~90%</div>
+        <p>Of manual catalog requests fall into five change types. The automation was scoped to cover those first.</p>
+      </div>
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Catalog operations</span><span class="t t-d">Delivery</span></div>
+        <div class="kpi-val">0</div>
+        <p>Rows re-typed by hand for new SKUs: requests go from spreadsheet to live product automatically.</p>
+      </div>
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Finance · AP</span><span class="t t-d">Delivery</span></div>
+        <div class="kpi-val">≤2 sprints</div>
+        <p>Phase 1 of a supplier payables product, scoped down across three PRD revisions to fit the team's cap.</p>
+      </div>
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Production kitchen</span><span class="t t-d">Delivery</span></div>
+        <div class="kpi-val">29</div>
+        <p>Dated decisions logged in one PRD, so every scope change can be explained to stakeholders.</p>
+      </div>
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Last-mile</span><span class="t t-d">Delivery</span></div>
+        <div class="kpi-val">10+</div>
+        <p>Services mapped and sized before the first engineering estimate, so the plan had no surprises.</p>
+      </div>
+      <div class="kpi">
+        <div class="kpi-top"><span class="kpi-area">Team enablement</span><span class="t t-d">Delivery</span></div>
+        <div class="kpi-val">Hours</div>
+        <p>Not days, to answer "how does this work today?", using an AI-assisted workflow instead of waiting on engineers.</p>
       </div>
     </div>
-    <div class="card">
-      <h3>Standar yang seragam</h3>
-      <ul>
-        <li>Kerangka analisis tetap: ringkasan → alur → status → approval → aturan → gap → pertanyaan</li>
-        <li>Tingkat gap Tinggi / Sedang / Rendah dipetakan langsung ke prioritas Jira</li>
-        <li>Perbedaan aplikasi mobile vs web untuk fitur yang sama selalu dicatat</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Pengaman</h3>
-      <ul>
-        <li>Codebase tidak pernah diubah atau dijalankan</li>
-        <li>Query data wajib dry run &amp; cek biaya dulu</li>
-        <li>Tiket, pesan, dan perubahan data hanya dikirim setelah konfirmasi</li>
-        <li>Fakta stabil masuk knowledge base, jadi analisis berikutnya tidak mulai dari nol</li>
-      </ul>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Selected case studies</div>
+    <h2>Problem → insight → shipped scope</h2>
+    <p class="intro">Details are generalized. No internal data, code or documents are shown.</p>
+
+    <article class="case first">
+      <div class="case-meta">
+        <div class="domain">Consumer · Discovery</div>
+        <h3>Automatic ranking for search &amp; category</h3>
+        <dl class="meta-list">
+          <div><dt>Role</dt><dd>PRD, ranking rules, success metrics</dd></div>
+          <div><dt>Partners</dt><dd>Data science, Catalog, Commercial</dd></div>
+        </dl>
+      </div>
+      <div class="case-body">
+        <div class="blocks">
+          <div class="blk"><h4>Problem</h4><p>Category order relied on manual sort values that went stale. Search ranked almost only by text match, so priority and new products were easy to miss.</p></div>
+          <div class="blk"><h4>Solution</h4><ul>
+            <li>Top three rows refreshed daily: <b>priority items</b>, <b>newest</b>, <b>best sellers</b></li>
+            <li>Counted per product, not per variant, to match one card per product in the app</li>
+            <li>Relevance as before from row 4; pilot on a few categories first</li>
+          </ul></div>
+        </div>
+        <div class="pair">
+          <div class="chart">
+            <div class="chart-title">Top keywords with a priority item in the top 3</div>
+            <div class="chart-sub">Simulation · indexed, today = 100</div>
+            <div class="bars">
+              <div class="bar-row"><span class="lbl">Today</span><div class="bar-track"><div class="bar-fill muted" data-w="60"></div></div><span class="num">100</span></div>
+              <div class="bar-row"><span class="lbl">New ranking</span><div class="bar-track"><div class="bar-fill pos" data-w="78.6"></div></div><span class="num">131</span></div>
+            </div>
+          </div>
+          <div class="outcomes" style="grid-template-columns:1fr">
+            <div class="oc"><span class="t t-t">Guardrail</span><div class="oc-val">0</div><p>products allowed to disappear from category pages</p></div>
+            <div class="oc"><span class="t t-t">Reliability</span><div class="oc-val">≥95%</div><p>of days with a successful refresh, measured against a pre-launch baseline</p></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <div class="domain">Consumer · Growth</div>
+        <h3>Homepage: let the data set the block order</h3>
+        <dl class="meta-list">
+          <div><dt>Role</dt><dd>Analysis, design, experiment plan</dd></div>
+          <div><dt>Partners</dt><dd>Growth, Design, Data</dd></div>
+        </dl>
+      </div>
+      <div class="case-body">
+        <div class="blocks">
+          <div class="blk"><h4>Insight</h4><p>I joined impressions with sales by touchpoint. The most-seen block was not the one that sold, and one of the strongest sales sources sat below the fold.</p></div>
+          <div class="blk"><h4>What I did</h4><ul>
+            <li>Proposed a new block order and a one-line account strip (points · vouchers · check-in)</li>
+            <li>Compared four first-screen layouts side by side</li>
+            <li>Recommended a <b>3-arm A/B test</b> instead of a big-bang redesign</li>
+          </ul></div>
+        </div>
+        <div class="lesson"><b>Lesson:</b> a layout that "looks busy" is not the problem to fix. The useful question is which block earns its space.</div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <div class="domain">Operations · Finance</div>
+        <h3>Purchase invoice &amp; supplier payables</h3>
+        <dl class="meta-list">
+          <div><dt>Role</dt><dd>Process mapping, PRD, design, tickets, E2E tests</dd></div>
+          <div><dt>Partners</dt><dd>Finance, Purchasing, Engineering, QA</dd></div>
+        </dl>
+      </div>
+      <div class="case-body">
+        <div class="blocks">
+          <div class="blk"><h4>Problem</h4><p>Supplier payables were tracked outside the core system, with no aging view and manual reconciliation.</p></div>
+          <div class="blk"><h4>Solution</h4><ul>
+            <li>One invoice for one or many purchase orders</li>
+            <li>Settlement through bulk upload of payment proofs</li>
+            <li>Supplier payable card with aging and an immutable ledger</li>
+            <li>Role-based access enforced end to end</li>
+          </ul></div>
+        </div>
+        <div class="outcomes">
+          <div class="oc"><span class="t t-d">Scope</span><div class="oc-val">≤2 sprints</div><p>Phase 1 cut to fit the team's capacity</p></div>
+          <div class="oc"><span class="t t-d">Quality</span><div class="oc-val">E2E</div><p>Automated browser tests I wrote for the main flow</p></div>
+          <div class="oc"><span class="t t-d">Process</span><div class="oc-val">3 revisions</div><p>Each one made the PRD smaller, not bigger</p></div>
+        </div>
+        <div class="lesson"><b>Lesson:</b> dropping draft/void states and payment integration from Phase 1 is what made it shippable.</div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <div class="domain">Operations · Production</div>
+        <h3>Production kitchen: recipes, stock &amp; cost of goods</h3>
+        <dl class="meta-list">
+          <div><dt>Role</dt><dd>Discovery, PRD, decision log, tickets</dd></div>
+          <div><dt>Partners</dt><dd>Kitchen, Inventory, Finance</dd></div>
+        </dl>
+      </div>
+      <div class="case-body">
+        <div class="blocks">
+          <div class="blk"><h4>Problem</h4><p>Ingredient stock did not follow actual usage, so the cost of prepared food was hard to trust.</p></div>
+          <div class="blk"><h4>Solution</h4><ul>
+            <li>Phase 1: cost of goods from recipes held in the existing product master</li>
+            <li>Phase 2: actual usage per work order, with leftovers and waste posted automatically</li>
+          </ul></div>
+        </div>
+        <div class="outcomes">
+          <div class="oc"><span class="t t-d">Process</span><div class="oc-val">29</div><p>dated decisions logged (who, what, impact)</p></div>
+          <div class="oc"><span class="t t-d">Scope cut</span><div class="oc-val">0</div><p>new modules built: the existing master was reused</p></div>
+        </div>
+        <div class="lesson"><b>Lesson:</b> an approval step was dropped after operations showed it added friction without reducing risk.</div>
+      </div>
+    </article>
+
+    <div style="margin-top:40px">
+      <div class="eyebrow">More work</div>
+      <div class="more">
+        <div class="mw"><span class="domain">Last-mile</span><h4>Driver tracking: discovery &amp; sizing</h4><p>Live driver location, a dispatcher view and a customer tracking page, sized across services before any estimate.</p><div class="stat"><b>10+</b><span>services mapped</span></div></div>
+        <div class="mw"><span class="domain">Logistics · Courier</span><h4>Instant courier integration</h4><p>Mapped the existing courier flow against a partner API and wrote a backend-only PRD and UAT plan.</p><div class="stat"><b>0</b><span>front-end changes needed</span></div></div>
+        <div class="mw"><span class="domain">Warehouse · Controls</span><h4>Consistent stock-adjustment approvals</h4><p>Aligned approval rules across stock-reducing actions, and rejected an exception after analysis showed it weakened the control.</p><div class="stat"><b>1 rule set</b><span>for all adjustment types</span></div></div>
+        <div class="mw"><span class="domain">Warehouse · Replenishment</span><h4>Forecast-based refill</h4><p>Priority tiers from forecast and target stock. Manual overrides stay allowed but need a reason above a threshold.</p><div class="stat"><b>3 tiers</b><span>P0 / P1 / P2</span></div></div>
+        <div class="mw"><span class="domain">Marketing · Pricing</span><h4>Clearance pricing in the system</h4><p>Moving a spreadsheet process into the admin tool: per-row validation, approval below a price floor, change history.</p><div class="stat"><b>7</b><span>screens designed</span></div></div>
+        <div class="mw"><span class="domain">CRM · Vouchers</span><h4>Voucher overspend root cause</h4><p>Showed the overspend came from how codes were issued, not from broad adoption, and proposed a per-period cap.</p><div class="stat"><b>1 rule</b><span>change instead of cutting the audience</span></div></div>
+        <div class="mw"><span class="domain">Catalog · Quality</span><h4>Why a product is (not) visible</h4><p>Mapped every rule that decides if a product shows in the app, so teams can debug visibility themselves.</p><div class="stat"><b>15 rules</b><span>across 4 services, in one view</span></div></div>
+        <div class="mw"><span class="domain">Order tracking</span><h4>Stable delivery ETA</h4><p>The status page flipped between the booked slot and a predicted ETA. New rule: slot until shipped, then live ETA.</p><div class="stat"><b>1 rule</b><span>aligned with late-delivery alerts</span></div></div>
+        <div class="mw"><span class="domain">Marketing · Acquisition</span><h4>QR scan-to-claim voucher</h4><p>Most of the flow already existed, so the build was only the missing claim step and a web fallback.</p><div class="stat"><b>2 of 3</b><span>flow parts reused</span></div></div>
+      </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section id="kasus"><div class="wrap">
-  <div class="eyebrow">Studi kasus</div>
-  <h2>Produk yang saya analisis &amp; rancang</h2>
-  <p class="sub">Disamarkan: nama perusahaan, vendor, sistem internal, dan angka bisnis tidak ditampilkan.</p>
+<section id="automation">
+  <div class="wrap">
+    <div class="eyebrow">Automation I built</div>
+    <h2>Removing manual work from catalog &amp; pricing</h2>
+    <p class="intro">Teams worked in shared spreadsheets and re-typed every row into admin tools. I built n8n workflows that keep the spreadsheet as the interface, validate each row, go through the official APIs, and write the result back.</p>
+    <div class="autos">
+      <div class="auto">
+        <span class="t t-m">In use</span>
+        <h4>SKU creation</h4>
+        <p>A request row becomes a complete product, ready to sell, without anyone re-typing it.</p>
+        <ol class="steps">
+          <li>Row marked READY</li>
+          <li>Validate against master data</li>
+          <li>Duplicate check</li>
+          <li>Product, price &amp; channel listings</li>
+          <li>Image &amp; completeness checks</li>
+          <li>Catalog page + AI-suggested search words</li>
+          <li>Status written back to the row</li>
+        </ol>
+        <div class="oc"><div class="oc-val">60+ steps</div><p>plus a companion flow that creates special-tier variants, with safe resume</p></div>
+      </div>
+      <div class="auto">
+        <span class="t t-m">In use</span>
+        <h4>Homepage deals rotation</h4>
+        <p>Reshuffles a homepage deals section on a schedule so exposure spreads across the range. Anchor items stay locked.</p>
+        <div class="chart">
+          <div class="chart-title" style="font-size:13px">Exposure on the top-3 products</div>
+          <div class="chart-sub" style="margin-bottom:6px">Indexed, before = 100</div>
+          <div class="bars compact">
+            <div class="bar-row"><span class="lbl">Before</span><div class="bar-track"><div class="bar-fill muted" data-w="100"></div></div><span class="num">100</span></div>
+            <div class="bar-row"><span class="lbl">After</span><div class="bar-track"><div class="bar-fill pos" data-w="35"></div></div><span class="num">35</span></div>
+          </div>
+        </div>
+        <div class="oc"><div class="oc-val">Honest read-out</div><p>Exposure spread as intended. I reported the sales effect as "not yet distinguishable from normal variance".</p></div>
+      </div>
+      <div class="auto">
+        <span class="t t-e">Improving</span>
+        <h4>Clearance price publishing</h4>
+        <p>Discounted prices for near-expiry stock are published as a daily campaign, straight from a sheet per warehouse.</p>
+        <ol class="steps">
+          <li>Sheet per warehouse</li>
+          <li>Map columns, keep approved rows</li>
+          <li>Build the daily campaign</li>
+          <li>Live prices + chat alert</li>
+        </ol>
+        <div class="oc"><div class="oc-val">Root-caused</div><p>silent publishing failures to sheet and config issues, then designed an in-system replacement with validation and approval</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <article class="case">
-    <aside><div class="domain">Procurement · Finance</div><h3>Purchase Invoice &amp; buku hutang supplier</h3></aside>
-    <dl>
-      <dt>Masalah</dt><dd>Hutang ke supplier tidak tercatat di sistem mana pun. Finance mengelolanya di luar sistem.</dd>
-      <dt>Peran</dt><dd>Memetakan alur PO sampai tagihan dari code, PRD bersama Finance &amp; Purchasing, desain layar, pemecahan tiket BE/FE/QA.</dd>
-      <dt>Solusi</dt><dd><ul>
-        <li>Invoice untuk satu atau beberapa PO, final saat disimpan</li>
-        <li>Pelunasan lewat bulk upload bukti bayar</li>
-        <li>Kartu hutang per supplier dengan umur hutang</li>
-        <li>Ledger yang tidak bisa diubah atau dihapus</li>
-      </ul></dd>
-      <div class="lesson"><b>Pelajaran:</b> tiga kali revisi PRD justru membuat versi akhir lebih sederhana (tanpa draft/void, tanpa integrasi bayar otomatis) agar muat dalam 2 sprint.</div>
-    </dl>
-  </article>
+<section id="approach">
+  <div class="wrap">
+    <div class="eyebrow">How I work</div>
+    <h2>An AI-assisted PM workflow, with people making the calls</h2>
+    <p class="intro">I built a personal workspace of <b style="color:var(--ink)">19 specialist AI agents</b> (one per domain, plus reviewer, PRD, design, ticket and QA agents). It traces how a process works today, cites the evidence, and drafts the documents. I review and decide.</p>
+    <div class="flow">
+      <div class="fstep"><small>01</small><b>Trace</b><span>Map how the process works today</span></div>
+      <div class="fstep"><small>02</small><b>Review</b><span>Check every piece of evidence</span></div>
+      <div class="fstep gate"><small>PM</small><b>Decide</b><span>Open questions answered &amp; logged</span></div>
+      <div class="fstep"><small>03</small><b>PRD &amp; design</b><span>Requirements, mockups, user flows</span></div>
+      <div class="fstep"><small>04</small><b>Tickets &amp; QA</b><span>A test scenario for every requirement</span></div>
+      <div class="fstep gate"><small>PM</small><b>Confirm</b><span>Only then shared with the team</span></div>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h4>Every claim is labelled</h4>
+        <p>Stakeholders always know what is settled and what is still open.</p>
+        <div class="tags"><span class="tag f">FACT</span><span class="tag a">ASSUMPTION</span><span class="tag c">NEEDS CONFIRMATION</span><span class="tag p">PROPOSAL</span></div>
+      </div>
+      <div class="card">
+        <h4>Tools I run for the team</h4>
+        <p>A chat Q&amp;A bot that answers process questions with sources, a weekly operations metrics pipeline, a query cost guard, automated weekly reporting, and HTML-to-Figma mockups.</p>
+      </div>
+    </div>
+    <ol class="principles">
+      <li><i>01</i><b>Evidence first</b><span>Every claim traces to a source.</span></li>
+      <li><i>02</i><b>Facts ≠ proposals</b><span>Never mixed in one sentence.</span></li>
+      <li><i>03</i><b>Log decisions</b><span>Dated, with owner and impact.</span></li>
+      <li><i>04</i><b>Ship small</b><span>Two sprints max per project.</span></li>
+      <li><i>05</i><b>People decide</b><span>AI drafts; I confirm what goes out.</span></li>
+    </ol>
+  </div>
+</section>
 
-  <article class="case">
-    <aside><div class="domain">Inventory · Produksi</div><h3>Production kitchen: resep, potong stok, COGS</h3></aside>
-    <dl>
-      <dt>Masalah</dt><dd>Stok bahan baku dapur tidak terpotong sesuai pemakaian, sehingga COGS tidak akurat.</dd>
-      <dt>Solusi</dt><dd><ul>
-        <li>Model hybrid: resep sebagai nilai awal, stok dipotong dari pemakaian aktual per work order</li>
-        <li>Sisa lebih, waste, dan selisih tercatat otomatis</li>
-        <li>Dipecah menjadi Fase 1 COGS dan Fase 2 pemakaian aktual</li>
-      </ul></dd>
-      <div class="lesson"><b>Pelajaran:</b> 29 keputusan tercatat bertanggal. Scope terus diperkecil: master resep yang sudah ada dipakai ulang, dan fitur substitusi dibatalkan karena operasional tidak membutuhkannya.</div>
-    </dl>
-  </article>
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">Experience</div>
+    <h2>From solving the problem to defining it</h2>
+    <p class="intro">In TechOps my job was the solution: find the root cause, fix it, keep the system up. As a PM my job starts before that: decide which problem is worth solving, for whom, and how we will know it is solved.</p>
+    <div class="shift">
+      <div class="shift-col">
+        <div class="shift-tag">TechOps · solution-first</div>
+        <ul>
+          <li>"What is broken, and how fast can we fix it?"</li>
+          <li>Success = incident closed within SLA</li>
+          <li>Starts from the alert or the ticket</li>
+        </ul>
+      </div>
+      <div class="shift-arrow" aria-hidden="true">→</div>
+      <div class="shift-col now">
+        <div class="shift-tag">PM · problem-first</div>
+        <ul>
+          <li>"Who is affected, how much, and is it worth solving now?"</li>
+          <li>Success = a measurable outcome, agreed before building</li>
+          <li>Starts from a problem statement backed by data</li>
+        </ul>
+      </div>
+    </div>
+    <div class="xp">
+      <ol class="timeline">
+        <li class="now">
+          <div class="when">2026 — Present</div>
+          <h4>Product Manager, Operations &amp; Consumer</h4>
+          <div class="org">Sayurbox</div>
+          <p>Every project starts from a written problem statement (who is affected, the evidence, the success metric) before any solution is chosen. Scope: warehouse, procurement &amp; payables, kitchen and last-mile, plus homepage, search, promotions and checkout in the customer app.</p>
+        </li>
+        <li>
+          <div class="when">Dec 2021 — 2026</div>
+          <h4>TechOps Engineer (Interim TechOps Lead)</h4>
+          <div class="org">Sayurbox</div>
+          <p>Solution-focused: incident handling and root-cause fixes, release support, monitoring and alerting, automation, and SLA ticketing. This is where I learned which problems are real and which are noise.</p>
+        </li>
+        <li>
+          <div class="when">Nov 2019 — Dec 2021</div>
+          <h4>Lead Technical Operation</h4>
+          <div class="org">Cartenz Tech</div>
+        </li>
+        <li>
+          <div class="when">Jun 2015 — Aug 2019</div>
+          <h4>Operation and Maintenance</h4>
+          <div class="org">Gratika</div>
+        </li>
+      </ol>
+      <div class="skills">
+        <div class="card"><h4>Product</h4><div class="tags"><span class="tag">Discovery</span><span class="tag">PRDs &amp; decision logs</span><span class="tag">Sizing</span><span class="tag">A/B test design</span><span class="tag">UAT</span><span class="tag">Jira</span></div></div>
+        <div class="card"><h4>Data &amp; AI</h4><div class="tags"><span class="tag">BigQuery</span><span class="tag">Metabase</span><span class="tag">SQL</span><span class="tag">Claude Code agents</span><span class="tag">n8n</span><span class="tag">Python</span><span class="tag">Playwright</span></div></div>
+        <div class="card"><h4>Design &amp; Tech</h4><div class="tags"><span class="tag">Figma</span><span class="tag">HTML mockups</span><span class="tag">REST APIs</span><span class="tag">GCP / AWS</span><span class="tag">Kubernetes</span><span class="tag">Datadog</span></div></div>
+        <div class="card"><h4>Education</h4><p>B.Sc. Computer Science, University of Pakuan · 2010–2014</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <article class="case">
-    <aside><div class="domain">Logistik · Last-mile</div><h3>Aplikasi driver in-house &amp; live tracking</h3></aside>
-    <dl>
-      <dt>Masalah</dt><dd>Armada sendiri memakai aplikasi pihak ketiga, sehingga tidak ada lokasi driver live, pelanggan tidak bisa melacak di peta, dan data gagal kirim tersebar.</dd>
-      <dt>Peran</dt><dd>Sizing dari code (10+ service terdampak), pemetaan ketergantungan ke vendor, PRD, mockup 10 layar.</dd>
-      <dt>Solusi</dt><dd><ul>
-        <li>Fase 1: driver tracker, control tower, tracking pelanggan</li>
-        <li>Fase 2: ganti aplikasi vendor untuk last-mile instant</li>
-        <li>Fase 3: gagal kirim, retur, middle-mile, next-day</li>
-      </ul></dd>
-    </dl>
-  </article>
+<section id="contact">
+  <div class="wrap contact">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>Let's talk about operations or consumer products.</h2>
+      <p class="intro" style="margin-bottom:0">Based in Indonesia.</p>
+    </div>
+    <div class="clinks">
+      <a class="clink" href="mailto:mfaizalayatullah@gmail.com"><b>mfaizalayatullah@gmail.com</b><span>Email →</span></a>
+      <a class="clink" href="https://linkedin.com/in/mfaizalayatullah" target="_blank" rel="noopener"><b>/in/mfaizalayatullah</b><span>LinkedIn ↗</span></a>
+    </div>
+  </div>
+</section>
 
-  <article class="case">
-    <aside><div class="domain">Gudang · Replenishment</div><h3>Logic refill berbasis forecast</h3></aside>
-    <dl>
-      <dt>Masalah</dt><dd>Pengisian ulang rak pick dihitung manual di spreadsheet.</dd>
-      <dt>Solusi</dt><dd>Prioritas P0/P1/P2 dari forecast &amp; target stok dengan stok realtime per area. Override manual tetap boleh, tetapi wajib beri alasan bila deviasi melewati ambang.</dd>
-    </dl>
-  </article>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Muhammad Faizal Ayatullah</span>
+  </div>
+</footer>
 
-  <article class="case">
-    <aside><div class="domain">Marketing · Pricing</div><h3>Clearance sale: dari spreadsheet ke sistem</h3></aside>
-    <dl>
-      <dt>Masalah</dt><dd>Baris tidak valid terbuang tanpa pesan, label kedaluwarsa hilang saat campaign diedit, dan tidak ada approval maupun jejak perubahan.</dd>
-      <dt>Solusi</dt><dd>Desain 7 layar: validasi per baris dengan alasan yang terlihat, approval untuk harga di bawah batas wajar, konfirmasi sebelum promo live dinonaktifkan, riwayat perubahan.</dd>
-    </dl>
-  </article>
-
-  <article class="case">
-    <aside><div class="domain">Commercial · Promo</div><h3>Promo "Beli Banyak Lebih Hemat"</h3></aside>
-    <dl>
-      <dt>Masalah</dt><dd>Commercial ingin menaikkan jumlah item per order lewat diskon mix &amp; match lintas SKU.</dd>
-      <dt>Peran</dt><dd>Mengecek engine promo dari code. Sebagian besar mekanisme sudah ada, jadi PRD fokus ke gap yang benar-benar belum ada.</dd>
-    </dl>
-  </article>
-</div></section>
-
-<section id="tools"><div class="wrap">
-  <div class="eyebrow">Otomasi</div>
-  <h2>Tools yang saya bangun</h2>
-  <p class="sub">Pekerjaan berulang diotomasi. Keputusan tetap di manusia.</p>
-  <table>
-    <tr><th>Bot Q&amp;A di Google Chat</th><td>Tim menulis <code>#tanya …</code>. Bot menjawab dari knowledge base, dokumen analisis, dan code, lengkap dengan referensi dan konteks thread.</td></tr>
-    <tr><th>Metrik operasional mingguan</th><td>Availability, stock gap, unfulfillment, dan waste per gudang dari BigQuery, dengan estimasi biaya dan batas scan otomatis.</td></tr>
-    <tr><th>BigQuery cost guard</th><td>Dry run wajib sebelum query apa pun. Query mahal harus dikonfirmasi dulu.</td></tr>
-    <tr><th>Workflow n8n</th><td>Rotasi section homepage top-30 produk, duplikasi SKU untuk tier khusus, draft SKU baru dari spreadsheet.</td></tr>
-    <tr><th>QA E2E di staging</th><td>Agent menjalankan skenario test di browser. Aksi yang mengubah data harus dikonfirmasi.</td></tr>
-    <tr><th>Weekly report otomatis</th><td>Laporan mingguan disusun dari tiket Jira dan dokumen kerja ke satu dokumen hidup.</td></tr>
-    <tr><th>Code knowledge graph</th><td>Indeks codebase per domain untuk pencarian lintas service yang lebih cepat dan murah.</td></tr>
-  </table>
-</div></section>
-
-<section id="prinsip"><div class="wrap">
-  <div class="eyebrow">Cara kerja</div>
-  <h2>Prinsip yang saya pegang</h2>
-  <ol class="principles">
-    <li><div><b>Bukti dulu, opini kemudian</b><span>Setiap klaim tentang sistem bisa ditelusuri ke code atau data.</span></div></li>
-    <li><div><b>Pisahkan fakta, asumsi, dan usulan</b><span>Tidak ada yang tercampur di satu kalimat.</span></div></li>
-    <li><div><b>Catat keputusan</b><span>Log keputusan bertanggal di setiap PRD, sehingga perubahan scope bisa dijelaskan.</span></div></li>
-    <li><div><b>Scope kecil yang bisa rilis</b><span>Satu project maksimal 2 sprint. Fase berikutnya tidak dicampur ke tiket fase berjalan.</span></div></li>
-    <li><div><b>Otomasi, tapi manusia memutuskan</b><span>Agent membuat draft. Yang keluar ke orang lain atau ke sistem selalu lewat konfirmasi.</span></div></li>
-  </ol>
-</div></section>
-
-<footer id="kontak"><div class="wrap">
-  <b style="color:var(--ink)">Kontak</b><br>
-  LinkedIn: <a href="#">(isi)</a> · Email: <a href="#">(isi)</a>
-  <p class="note">Contoh di halaman ini disamarkan dan tidak memuat data, kode, atau dokumen internal perusahaan.</p>
-</div></footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const fills = document.querySelectorAll('.bar-fill');
+  const setW = el => { el.style.width = el.dataset.w + '%'; };
+  if (window.matchMedia('print').matches || !('IntersectionObserver' in window)) { fills.forEach(setW); }
+  else {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { setW(e.target); io.unobserve(e.target); } });
+    }, {threshold: .3});
+    fills.forEach(f => io.observe(f));
+  }
+  window.addEventListener('beforeprint', () => fills.forEach(setW));
+</script>
 </body>
 </html>
